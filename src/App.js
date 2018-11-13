@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, Button } from "react-native";
 
 import Text from "./components/Text";
 import View from "./components/View";
@@ -21,15 +21,26 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  state = {
+    color: "#aaaaaa"
+  };
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          Welcome to React Native <Text bold>Champion</Text>!
-        </Text>
-        <Text color="red" bold>
-          To get started, edit App.js
-        </Text>
+        <View />
+        <View>
+          <Text>
+            Welcome to React Native <Text bold>Champion</Text>!
+          </Text>
+          <Text color="red" bold>
+            To get started, edit App.js
+          </Text>
+          <Button
+            title="Press me!"
+            color={this.state.color}
+            onPress={() => this.setState(() => ({ color: "#e01111" }))}
+          />
+        </View>
       </View>
     );
   }
